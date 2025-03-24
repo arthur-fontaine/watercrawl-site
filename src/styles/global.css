@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-title: 'Aujournuit Condensed', serif;
+  --font-heading: 'Aujournuit', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+html {
+  container-name: scroller;
+  container-type: scroll-state;
+}
+
+@custom-variant scroll-state-top {
+  @container scroller scroll-state(scrollable: top) {
+    @slot;
+  }
+}

@@ -1,22 +1,79 @@
+---
+import { AstroFont } from "astro-font";
+import path from "path";
+
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>
+      Watercrawl{Astro.props.title ? ` — ${Astro.props.title}` : ""}
+    </title>
+
+    <AstroFont
+      config={[
+        {
+          name: "Aujournuit Condensed",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: path.join(
+                process.cwd(),
+                "public",
+                "fonts",
+                "Aujournuit-Condensed.woff2"
+              ),
+            },
+          ],
+          preload: true,
+          display: "swap",
+          fallback: "serif",
+        },
+        {
+          name: "Aujournuit",
+          src: [
+            {
+              style: "normal",
+              weight: "400",
+              path: path.join(
+                process.cwd(),
+                "public",
+                "fonts",
+                "Aujournuit-Regular.woff2"
+              ),
+            },
+          ],
+          preload: true,
+          display: "swap",
+          fallback: "serif",
+        },
+      ]}
+    />
+  </head>
+  <body
+    class="[[data-scroll-bottom]]:overscroll-none overscroll-auto"
+    onscroll="requestAnimationFrame(() => { if (window.scrollY > 200) document.body.setAttribute('data-scroll-bottom', 'true'); else document.body.removeAttribute('data-scroll-bottom'); });"
+  >
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

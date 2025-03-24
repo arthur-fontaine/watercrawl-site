@@ -1,11 +1,86 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import waterBackground3840x2160Webm from "../assets/water-background-3840-2160.webm";
+import waterBackground3840x2160Mp4 from "../assets/water-background-3840-2160.mp4";
+import { Code } from "astro:components";
+import Codeblock from "../components/Codeblock.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    class="fixed inset-0 w-full h-full object-cover -z-10"
+  >
+    <source src={waterBackground3840x2160Webm} type="video/webm" />
+    <source src={waterBackground3840x2160Mp4} type="video/mp4" />
+  </video>
+
+  <header
+    class="flex flex-col items-center justify-center gap-2 w-full h-full min-h-dvh text-white px-4"
+  >
+    <h1 class="font-title text-8xl md:text-9xl">Watercrawl</h1>
+    <p class="font-body text-3xl font-light text-balance text-center">
+      Crawl and scrape the web as fluidly as water.
+    </p>
+  </header>
+
+  <main
+    class="max-w-4xl mx-auto -translate-y-[25dvh] bg-black/60 px-8 py-16 md:px-16 rounded-t-4xl text-white"
+  >
+    <section>
+      <h2 class="font-title text-4xl text-balance">
+        Setup a crawler/scraper in seconds
+      </h2>
+
+      <p class="font-body font-light text-lg mt-4 opacity-80">
+        With Watercrawl, you can create a new crawler <em>and</em> scraper in seconds.
+        Just run the following command:
+      </p>
+
+      <Codeblock lang="bash" class="mt-8" copyButton>
+        npm create watercrawl
+      </Codeblock>
+    </section>
+
+		<section class="mt-16">
+			<h2 class="font-title text-4xl text-balance">Configuration</h2>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				After running the command, you will be prompted to configure your crawler.
+				Follow the instructions to set up your crawler. You will be able to
+				configure more precisely later if you want.
+			</p>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				Read more in the{" "}
+				<a
+					href="https://github.com/arthur-fontaine/watercrawl?tab=readme-ov-file#-tools"
+					class="text-white underline font-regular"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					README<a
+				/>.
+			</p>
+		</section>
+
+		<section class="mt-16">
+			<h2 class="font-title text-4xl text-balance">Open Source</h2>
+			
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				Watercrawl is proudly open source. You can find the source code on{" "}
+				<a
+					href="https://github.com/arthur-fontaine/watercrawl"
+					class="text-white underline font-regular"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					GitHub<a
+				/>.
+			</p>
+		</section>
+	</main>
 </Layout>

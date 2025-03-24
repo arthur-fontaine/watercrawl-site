@@ -1,14 +1,23 @@
 {
   "name": "",
-  "type": "module",
   "version": "0.0.1",
+  "dependencies": {
+    "@iconify-json/tabler": "^1.2.17",
+    "@tailwindcss/vite": "^4.0.15",
+    "astro": "^5.3.1",
+    "astro-font": "^1.0.0",
+    "astro-icon": "^1.1.5",
+    "dedent": "^1.5.3",
+    "tailwindcss": "^4.0.15"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
-  "dependencies": {
-    "astro": "^5.3.1"
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "^1.2.5"
   }
 }
