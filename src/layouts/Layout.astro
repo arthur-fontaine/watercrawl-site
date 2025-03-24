@@ -61,10 +61,7 @@ interface Props {
       ]}
     />
   </head>
-  <body
-    class="[[data-scroll-bottom]]:overscroll-none overscroll-auto"
-    onscroll="requestAnimationFrame(() => { if (window.scrollY > 200) document.body.setAttribute('data-scroll-bottom', 'true'); else document.body.removeAttribute('data-scroll-bottom'); });"
-  >
+  <body class="overscroll-none">
     <slot />
   </body>
 </html>
