@@ -18,6 +18,16 @@ import { Code } from "astro:components";
 import Codeblock from "../components/Codeblock.astro";
 ---
 
+<head>
+	<link rel="preload" href={waterBackground3840x2160Mp4} as="video" type="video/mp4" media="(min-height: 1440px)" />
+	<link rel="preload" href={waterBackground2560x1440Mp4} as="video" type="video/mp4" media="(min-height: 1080px)" />
+	<link rel="preload" href={waterBackground1920x1080Mp4} as="video" type="video/mp4" media="(min-height: 900px)" />
+	<link rel="preload" href={waterBackground1600x900Mp4} as="video" type="video/mp4" media="(min-height: 720px)" />
+	<link rel="preload" href={waterBackground1280x720Mp4} as="video" type="video/mp4" media="(min-height: 576px)" />
+	<link rel="preload" href={waterBackground1024x576Mp4} as="video" type="video/mp4" media="(min-height: 480px)" />
+	<link rel="preload" href={waterBackground1920x1080Mp4} as="video" type="video/mp4" />
+</head>
+
 <Layout>
   <video
     autoplay
@@ -39,7 +49,8 @@ import Codeblock from "../components/Codeblock.astro";
 		<!-- <source src={waterBackground1024x576Webm} type="video/webm" media="(min-height: 480px)" /> -->
 		<source src={waterBackground1024x576Mp4} type="video/mp4" media="(min-height: 480px)" />
 		<!-- <source src={waterBackground854x480Webm} type="video/webm" media="(min-height: 0px)" /> -->
-		<source src={waterBackground854x480Mp4} type="video/mp4" media="(min-height: 0px)" />
+		<source src={waterBackground854x480Mp4} type="video/mp4" media="(min-height: 360px)" />
+		<source src={waterBackground1920x1080Mp4} type="video/mp4" />
   </video>
 
   <header
