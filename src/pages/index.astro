@@ -2,6 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 // import waterBackground3840x2160Webm from "../assets/water-background-3840-2160.webm";
 import waterBackground3840x2160Mp4 from "../assets/water-background-3840-2160.mp4";
+// import waterBackground2560x1440Webm from "../assets/water-background-2560-1440.webm";
+import waterBackground2560x1440Mp4 from "../assets/water-background-2560-1440.mp4";
+// import waterBackground1920x1080Webm from "../assets/water-background-1920-1080.webm";
+import waterBackground1920x1080Mp4 from "../assets/water-background-1920-1080.mp4";
+// import waterBackground1600x900Webm from "../assets/water-background-1600-900.webm";
+import waterBackground1600x900Mp4 from "../assets/water-background-1600-900.mp4";
+// import waterBackground1280x720Webm from "../assets/water-background-1280-720.webm";
+import waterBackground1280x720Mp4 from "../assets/water-background-1280-720.mp4";
+// import waterBackground1024x576Webm from "../assets/water-background-1024-576.webm";
+import waterBackground1024x576Mp4 from "../assets/water-background-1024-576.mp4";
+// import waterBackground854x480Webm from "../assets/water-background-854-480.webm";
+import waterBackground854x480Mp4 from "../assets/water-background-854-480.mp4";
 import { Code } from "astro:components";
 import Codeblock from "../components/Codeblock.astro";
 ---
@@ -14,8 +26,20 @@ import Codeblock from "../components/Codeblock.astro";
     playsinline
     class="fixed inset-0 w-lvw h-lvh object-cover -z-10"
   >
-    <!-- <source src={waterBackground3840x2160Webm} type="video/webm" /> -->
-    <source src={waterBackground3840x2160Mp4} type="video/mp4" />
+		<!-- <source src={waterBackground3840x2160Webm} type="video/webm" media="(min-height: 1440px)" /> -->
+		<source src={waterBackground3840x2160Mp4} type="video/mp4" media="(min-height: 1440px)" />
+		<!-- <source src={waterBackground2560x1440Webm} type="video/webm" media="(min-height: 1080px)" /> -->
+		<source src={waterBackground2560x1440Mp4} type="video/mp4" media="(min-height: 1080px)" />
+		<!-- <source src={waterBackground1920x1080Webm} type="video/webm" media="(min-height: 900px)" /> -->
+		<source src={waterBackground1920x1080Mp4} type="video/mp4" media="(min-height: 900px)" />
+		<!-- <source src={waterBackground1600x900Webm} type="video/webm" media="(min-height: 720px)" /> -->
+		<source src={waterBackground1600x900Mp4} type="video/mp4" media="(min-height: 720px)" />
+		<!-- <source src={waterBackground1280x720Webm} type="video/webm" media="(min-height: 576px)" /> -->
+		<source src={waterBackground1280x720Mp4} type="video/mp4" media="(min-height: 576px)" />
+		<!-- <source src={waterBackground1024x576Webm} type="video/webm" media="(min-height: 480px)" /> -->
+		<source src={waterBackground1024x576Mp4} type="video/mp4" media="(min-height: 480px)" />
+		<!-- <source src={waterBackground854x480Webm} type="video/webm" media="(min-height: 0px)" /> -->
+		<source src={waterBackground854x480Mp4} type="video/mp4" media="(min-height: 0px)" />
   </video>
 
   <header
