@@ -58,6 +58,24 @@ interface Props {
           display: "swap",
           fallback: "serif",
         },
+        {
+          name: "Monaspace Xenon",
+          src: [
+            {
+              style: "normal",
+                weight: "200",
+              path: path.join(
+                process.cwd(),
+                "public",
+                "fonts",
+                "MonaspaceXenon-ExtraLight.woff2"
+              ),
+            },
+          ],
+          preload: true,
+          display: "swap",
+          fallback: "monospace",
+        },
       ]}
     />
   </head>
