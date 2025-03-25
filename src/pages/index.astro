@@ -58,8 +58,8 @@ import Codeblock from "../components/Codeblock.astro";
   >
 		<div class="fixed flex flex-col items-center justify-center gap-2 ">
 			<h1 class="font-title text-8xl md:text-9xl">Watercrawl</h1>
-			<p class="font-body text-3xl font-light text-balance text-center">
-				Crawl and scrape the web as fluidly as water.
+			<p class="font-body text-3xl font-light text-balance text-center leading-snug mt-2">
+				Crawl and scrape the web as fluidly as water.<br>Unlock an ocean of data.
 			</p>
 		</div>
   </header>
@@ -74,34 +74,137 @@ import Codeblock from "../components/Codeblock.astro";
 
       <p class="font-body font-light text-lg mt-4 opacity-80">
         With Watercrawl, you can create a new crawler <em>and</em> scraper in seconds.
-        Just run the following command:
+        Just run the following command and follow the instructions.
       </p>
 
       <Codeblock lang="bash" class="mt-8" copyButton>
-        bun create watercrawl
+        bun create watercrawl # you can also use `npm create watercrawl`
       </Codeblock>
     </section>
 
 		<section class="mt-16">
-			<h2 class="font-title text-4xl text-balance">Configuration</h2>
+			<h2 class="font-title text-4xl text-balance">Advanced Usage <span class="opacity-60 italic">(maybe not for you)</span></h2>
 
 			<p class="font-body font-light text-lg mt-4 opacity-80">
-				After running the command, you will be prompted to configure your crawler.
-				Follow the instructions to set up your crawler. You will be able to
-				configure more precisely later if you want.
+				Running the command above and following the instructions will generate all the necessary files for your crawler/scraper.
+				But you can still customize your setup by modifying the configuration files.
 			</p>
 
+			<h3 class="font-title text-3xl text-balance mt-8">Browser</h3>
+
 			<p class="font-body font-light text-lg mt-4 opacity-80">
-				Read more in the{" "}
-				<a
-					href="https://github.com/arthur-fontaine/watercrawl?tab=readme-ov-file#-tools"
-					class="text-white underline font-regular"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					README<a
-				/>.
+				You can configure the browser used by your crawler by exporting a <Codeblock inline>browser</Codeblock> object in your configuration file (usually <Codeblock inline>flow.ts</Codeblock>).
 			</p>
+
+			<Codeblock lang="javascript" class="mt-4" copyButton>
+				import {`{ /* the browser you want to use */ }`} from "watercrawl/browsers";
+
+				export const browser = /* your browser instance */
+			</Codeblock>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				Here is a list of browsers included out of the box:
+			</p>
+
+			<ul class="font-body font-light text-lg mt-4 opacity-80 list-disc pl-8">
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=%2C%0A%7D)-,PuppeteerBrowser,-%3A%20Fetches%20the%20page" target="_blank" rel="noopener noreferrer">
+						<span class="underline">Puppeteer</span> <span class="opacity-60 italic">(default)</span></a
+					>: Uses a Google Chrome instance to fetch the page. Useful for websites that require JavaScript to render.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=HappyDomBrowser,-%3A%20Fetches%20the%20page" target="_blank" rel="noopener noreferrer">
+						<span class="underline">HappyDom</span></a
+					>: Uses HappyDom to fetch the page and query the DOM. Ideal for static websites. Faster than Puppeteer but can't execute JavaScript.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=%F0%9F%8C%90%20Browsers-,FetchBrowser,-%3A%20Fetches%20the%20page" target="_blank" rel="noopener noreferrer">
+						<span class="underline">Fetch</span></a
+					>: Uses Fetch to retrieve the page. Ideal for simple HTTP requests without rendering.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=Implement%20your%20owns-,Browser,-import%20type%20%7B" target="_blank" rel="noopener noreferrer">
+						<span class="underline">Implement your own</span></a
+					>: You can create your own browser by exporting a class that implements the <Codeblock inline>Browser</Codeblock> interface.
+				</li>
+			</ul>
+
+			<h3 class="font-title text-3xl text-balance mt-8">AI</h3>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				The AI is responsible for generating the results of your scraper.<br>
+				You can configure the LLM (Large Language Model) used by your scraper by exporting an <Codeblock inline>ai</Codeblock> object in your configuration file (usually <Codeblock inline>flow.ts</Codeblock>).
+			</p>
+
+			<Codeblock lang="javascript" class="mt-4" copyButton>
+				import {`{ /* the ai you want to use */ }`} from "watercrawl/ais";
+
+				export const ai = /* your ai instance */
+			</Codeblock>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				Here is a list of LLMs included out of the box:
+			</p>
+
+			<ul class="font-body font-light text-lg mt-4 opacity-80 list-disc pl-8">
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=%F0%9F%A7%A0%20AIs-,OpenAI,-%3A%20Uses%20the%20OpenAI" target="_blank" rel="noopener noreferrer">
+						<span class="underline">OpenAI</span> <span class="opacity-60 italic">(default)</span></a
+					>: Uses the OpenAI API to generate text.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=%2C%0A%7D)-,MultiAI,-%3A%20If%20an%20AI" target="_blank" rel="noopener noreferrer">
+						<span class="underline">MultiAI</span></a
+					>: If one of your AI instances fails, it will try the next one in the list. Useful if you have access to multiple AI APIs with different quotas.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=it%20as%20%60browser%60-,AI,-import%20type%20%7B" target="_blank" rel="noopener noreferrer">
+						<span class="underline">Implement your own</span></a
+					>: You can create your own AI by exporting a class that implements the <Codeblock inline>AI</Codeblock> interface.
+				</li>
+			</ul>
+
+			<h3 class="font-title text-3xl text-balance mt-8">Queue</h3>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				Queues are used to manage the websites to visit. See it as a to-do list for your crawler.<br>
+				You can configure the queue used by your crawler by exporting a <Codeblock inline>queue</Codeblock> object in your configuration file (usually <Codeblock inline>flow.ts</Codeblock>).
+			</p>
+
+			<Codeblock lang="javascript" class="mt-4" copyButton>
+				import {`{ /* the queue you want to use */ }`} from "watercrawl/queues";
+
+				export const queue = /* your queue instance */
+			</Codeblock>
+
+			<p class="font-body font-light text-lg mt-4 opacity-80">
+				Here is a list of queues included out of the box:
+			</p>
+
+			<ul class="font-body font-light text-lg mt-4 opacity-80 list-disc pl-8">
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=%E2%8F%B3%20Queues-,BullQueue,-%3A%20Uses%20Bull%20as" target="_blank" rel="noopener noreferrer">
+						<span class="underline">Bull</span> <span class="opacity-60 italic">(default)</span></a
+					>: Uses Bull and Redis to manage the queue. Ideal for distributed systems.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=%2C%0A%7D)-,JsQueue,-%3A%20Uses%20an%20in" target="_blank" rel="noopener noreferrer">
+						<span class="underline">JsQueue</span></a
+					>: Uses an in-memory queue. Ideal for simple setups.
+				</li>
+
+				<li>
+					<a href="https://github.com/arthur-fontaine/watercrawl#:~:text=it%20as%20%60ai%60-,Queue,-import%20type%20%7B" target="_blank" rel="noopener noreferrer">
+						<span class="underline">Implement your own</span></a
+					>: You can create your own queue by exporting a class that implements the <Codeblock inline>Queue</Codeblock> interface.
+				</li>
+			</ul>
 		</section>
 
 		<section class="mt-16">

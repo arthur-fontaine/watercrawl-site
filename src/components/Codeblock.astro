@@ -5,30 +5,32 @@ import { Icon } from "astro-icon/components";
 import dedent from "dedent";
 
 interface Props {
-  children: string;
-  lang: ComponentProps<typeof Code>["lang"];
+  children: string | string[];
+  lang?: ComponentProps<typeof Code>["lang"];
   copyButton?: boolean;
   class?: string;
+  inline?: boolean;
 }
 
 const code = dedent((await Astro.slots.render('default')).trim());
 ---
 
-<div class={`relative ${Astro.props.class}`}>
+<span class={`relative ${Astro.props.inline ? 'inline-block' : 'block'} ${Astro.props.class}`}>
   <Code
     {code}
-    lang={Astro.props.lang}
-    class="p-4 rounded-xl"
+    lang={Astro.props.lang ?? "text"}
+    class={`${Astro.props.inline ? "p-1 rounded-md" : "p-4 rounded-xl"} text-[0.9em]`}
     theme="poimandres"
+    inline={Astro.props.inline}
   />
 
   {Astro.props.copyButton && (
     <button
-      class="absolute top-0 right-0 text-sm text-white p-2 mt-3 mr-3 rounded-md outline-white/20 outline-2 bg-white/5 hover:bg-white/10"
+      class="absolute top-0 right-0 text-sm text-white p-2 mt-3 mr-3 rounded-md outline-white/20 outline-2 bg-white/5 hover:bg-white/10 cursor-pointer"
       onclick={`navigator.clipboard.writeText(${JSON.stringify(code)}); this.setAttribute('data-copied', true); setTimeout(() => this.removeAttribute('data-copied'), 2000);`}
     >
       <Icon name="tabler:copy" class="w-4 h-4 in-[[data-copied]]:hidden" />
       <Icon name="tabler:check" class="w-4 h-4 not-in-[[data-copied]]:hidden" />
     </button>
   )}
-</div>
+</span>

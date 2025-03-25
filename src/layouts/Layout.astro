@@ -72,6 +72,8 @@ interface Props {
     margin: 0;
     width: 100%;
     height: 100%;
-    overscroll-behavior: none;
+    @media (min-width: 768px) {
+      overscroll-behavior: none;
+    }
   }
 </style>
